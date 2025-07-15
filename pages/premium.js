@@ -9,23 +9,26 @@ export default function Premium() {
           layout: 'vertical',
           color: 'blue',
           shape: 'pill',
-          label: 'paypal'
+          label: 'paypal',
         },
         createOrder: function (data, actions) {
           return actions.order.create({
-            purchase_units: [{
-              amount: {
-                value: '5.00' // your price
-              }
-            }]
+            purchase_units: [
+              {
+                amount: {
+                  value: '5.00', // Set your price here
+                },
+              },
+            ],
           });
         },
         onApprove: function (data, actions) {
           return actions.order.capture().then(function (details) {
             alert('Payment completed by ' + details.payer.name.given_name);
-            window.location.href = '/thank-you';
+            localStorage.setItem('cliplinker_is_premium', 'true'); // ✅ Save premium flag
+            window.location.href = '/thank-you'; // redirect to confirmation
           });
-        }
+        },
       }).render('#paypal-button-container');
     }
   }, []);
