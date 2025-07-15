@@ -1,17 +1,26 @@
 import Layout from '../components/Layout';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function Dashboard() {
   const [url, setUrl] = useState('');
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isPremium, setIsPremium] = useState(false);
   const router = useRouter();
+
+  // ✅ Check if user has paid
+  useEffect(() => {
+    const premium = localStorage.getItem('cliplinker_is_premium') === 'true';
+    setIsPremium(premium);
+  }, []);
 
   const handleDownload = async () => {
     if (!url) return;
     setLoading(true);
+
     try {
       const res = await fetch('/api/download', {
         method: 'POST',
@@ -19,10 +28,16 @@ export default function Dashboard() {
         body: JSON.stringify({ url }),
       });
       const json = await res.json();
+
+      if (!isPremium) {
+        json.title += ' (Preview Only)';
+      }
+
       setData(json);
     } catch (err) {
       console.error('Error:', err);
     }
+
     setLoading(false);
   };
 
@@ -41,6 +56,15 @@ export default function Dashboard() {
               Log out
             </button>
           </div>
+
+          {!isPremium && (
+            <div className="text-sm text-red-600 mb-4">
+              You are using the free version. Premium downloads unlock HD and faster speeds.{' '}
+              <Link href="/premium">
+                <a className="text-blue-500 underline">Upgrade Now</a>
+              </Link>
+            </div>
+          )}
 
           <input
             className="w-full px-4 py-2 border rounded mb-4"
