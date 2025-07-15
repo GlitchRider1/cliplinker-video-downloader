@@ -6,9 +6,9 @@ export default function Contact() {
       <div className="max-w-xl mx-auto mt-16 p-6 bg-white rounded shadow">
         <h2 className="text-3xl font-bold text-blue-600 mb-4">Contact Us</h2>
         <p className="text-gray-700 mb-6">
-          Have questions, feedback, or want to report an issue? We’d love to hear from you!
+          Have a question, suggestion, or issue? Send us a message below.
         </p>
-        <form action="mailto:your@email.com" method="POST" encType="text/plain">
+        <form action="mailto:your@email.com" method="POST">
           <input
             type="text"
             name="name"
