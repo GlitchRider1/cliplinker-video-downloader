@@ -2,17 +2,21 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div style={{ maxWidth: '400px', margin: '40px auto', textAlign: 'center', fontFamily: 'Arial, sans-serif' }}>
-      <h1 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>ClipLinker - Video Downloader</h1>
-      <p style={{ marginBottom: '30px' }}>
+    <div className="max-w-md mx-auto mt-20 p-6 text-center font-sans">
+      <h1 className="text-4xl font-bold mb-6 text-blue-600">ClipLinker - Video Downloader</h1>
+      <p className="mb-8 text-gray-700">
         Download videos easily by signing in or creating an account.
       </p>
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+      <div className="flex justify-center gap-6">
         <Link href="/login">
-          <a style={{ padding: '10px 20px', backgroundColor: '#0070f3', color: 'white', borderRadius: '5px', textDecoration: 'none' }}>Login</a>
+          <a className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+            Login
+          </a>
         </Link>
         <Link href="/signup">
-          <a style={{ padding: '10px 20px', backgroundColor: '#0070f3', color: 'white', borderRadius: '5px', textDecoration: 'none' }}>Sign Up</a>
+          <a className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+            Sign Up
+          </a>
         </Link>
       </div>
     </div>
