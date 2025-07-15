@@ -2,34 +2,35 @@ import Link from 'next/link';
 
 export default function Layout({ children }) {
   return (
-    <div className="min-h-screen flex flex-col font-sans">
-      {/* Navbar */}
-      <header className="bg-white shadow">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+    <div className="min-h-screen bg-gray-100">
+      <nav className="bg-white shadow-md">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/">
-            <a className="text-2xl font-bold text-blue-600">ClipLinker</a>
+            <a className="text-xl font-bold text-blue-600">ClipLinker</a>
           </Link>
-          <nav className="space-x-4 text-sm text-gray-600">
+          <div className="space-x-4">
+            <Link href="/">
+              <a className="text-gray-700 hover:text-blue-600">Home</a>
+            </Link>
             <Link href="/dashboard">
-              <a className="hover:text-blue-600">Dashboard</a>
+              <a className="text-gray-700 hover:text-blue-600">Dashboard</a>
             </Link>
-            <Link href="/login">
-              <a className="hover:text-blue-600">Login</a>
+            <Link href="/premium">
+              <a className="text-gray-700 hover:text-blue-600">Premium</a>
             </Link>
-            <Link href="/signup">
-              <a className="hover:text-blue-600">Signup</a>
+            <Link href="/features">
+              <a className="text-gray-700 hover:text-blue-600">Features</a>
             </Link>
-          </nav>
+            <Link href="/about">
+              <a className="text-gray-700 hover:text-blue-600">About</a>
+            </Link>
+            <Link href="/contact">
+              <a className="text-gray-700 hover:text-blue-600">Contact</a>
+            </Link>
+          </div>
         </div>
-      </header>
-
-      {/* Page content */}
-      <main className="flex-grow">{children}</main>
-
-      {/* Footer */}
-      <footer className="bg-gray-100 text-center text-sm py-4 mt-12">
-        &copy; {new Date().getFullYear()} ClipLinker. All rights reserved.
-      </footer>
+      </nav>
+      <main>{children}</main>
     </div>
   );
 }
