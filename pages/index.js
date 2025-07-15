@@ -7,7 +7,7 @@ export default function Home() {
       <section className="bg-blue-50 min-h-screen flex flex-col justify-center items-center text-center p-6">
         <h1 className="text-4xl md:text-5xl font-bold text-blue-700 mb-4">Welcome to ClipLinker</h1>
         <p className="text-lg text-gray-700 max-w-xl mb-6">
-          Download videos instantly from your favorite platforms — fast, secure, and with no account needed.
+          Download videos instantly from your favorite platforms — fast, secure, and no account required.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <Link href="/dashboard">
